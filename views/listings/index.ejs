@@ -1,0 +1,89 @@
+<% layout('/layouts/boilerplate') %>
+   
+        <!-- <h3>All Listings</h3> -->
+        <!-- <form action="/listings/new" method="GET"> <button>Create New listing</button> </form> -->
+
+        <style>
+            #filters{
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+
+            }
+            .filter{
+                text-align: center;
+                margin-right: 0;
+                margin-top: 2rem;
+                opacity: 0.7;
+                text-decoration: none;
+                color: inherit;
+                display: inline-flex;
+                flex-direction: column;
+                align-items: center;
+                min-width: 90px;
+            }
+
+            .filter:hover{
+                opacity: 1;
+                cursor: pointer;
+            }
+            .filter.active{
+                opacity: 1;
+                border-bottom: 2px solid #222;
+                padding-bottom: 0.25rem;
+            }
+
+        </style>
+
+
+        <% const categoryIcons = { mountain: "fa-solid fa-mountain", arctic: "fa-solid fa-snowflake", farms: "fa-solid fa-tractor", desert: "fa-solid fa-sun" }; %>
+        <% const encodedSearch = searchTerm ? encodeURIComponent(searchTerm) : ""; %>
+        <% const searchQuery = encodedSearch ? `search=${encodedSearch}` : ""; %>
+        <div id="filters">
+            <a class="filter <%= !activeCategory ? 'active' : '' %>" href="/listings<%= searchQuery ? `?${searchQuery}` : '' %>">
+                <div><i class="fa-solid fa-border-all"></i></div>
+                <p>All</p>
+            </a>
+            <% for (let category of categories) { %>
+                <a class="filter <%= activeCategory === category ? 'active' : '' %>" href="/listings?category=<%= category %><%= searchQuery ? `&${searchQuery}` : '' %>">
+                    <div><i class="<%= categoryIcons[category] || 'fa-solid fa-tag' %>"></i></div>
+                    <p><%= category.charAt(0).toUpperCase() + category.slice(1) %></p>
+                </a>
+            <% } %>
+        </div>
+        <% if (searchTerm) { %>
+            <p class="mt-3 mb-1"><b>Search:</b> <%= searchTerm %></p>
+        <% } %>
+        <% if (allListing.length === 0) { %>
+            <p class="mt-4">No listings found for this search.</p>
+        <% } else { %>
+            <div class="row  row-cols-1 row-cols-md-3 g-4 mt-3">
+                <% for (let listing of allListing) { %>
+                    <% const imageUrl = listing.image && listing.image.url ? listing.image.url : listing.image; %>
+                    <a href="/listings/<%=listing._id %>" class="listing-link">
+                        <div class="card col listing-card" style="width: 20rem;"> <img src="<%= imageUrl %>"
+                                class="card-img-top" alt="listing_image" />
+                                 <div class="card-img-overlay"></div>
+
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b>
+                                <%= listing.title %>
+                            </b><br />
+                            <%= listing.price.toLocaleString("en-IN")%> / night
+                        </p>
+
+                    </div>
+                        </div>
+                    </a>
+                <% } %>
+
+
+                </div>
+        <% } %>
+
+
+  
+
+    </html>
+

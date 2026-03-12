@@ -1,0 +1,131 @@
+body {
+    font-family: "Rubik", sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex:1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}   
+.navbar {
+    background-color: #ffffff;
+    color: rgb(200, 195, 195);
+    padding: 10px;
+}
+.fa-compass {
+    color: #ff6347;
+    font-size:2rem ;
+}
+
+
+.nav-link {
+    color: rgb(61, 43, 43) !important;
+    font-size: 1.2rem;
+    margin-right: 15px;
+}
+/* 
+Footer */
+
+.f-info-links a{
+    color: rgb(61, 43, 43);
+    text-decoration: none;
+    margin-right: 15px;
+
+}
+.f-info-links a:hover{
+    text-decoration: underline;
+}
+.f-info-links, .f-info-socials, .f-info-brand{
+    width:  100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.f-info-socials i{
+    font-size: 1.5rem;
+    margin-right :1rem;
+}
+.f-info{
+    text-align:center;
+    height : 8 rem;
+    background-color: aliceblue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+}
+
+/* cards */
+
+.listing-card{
+    border:none !important;
+    margin-bottom:2rem ;
+
+}
+.card-img-top{
+    border-radius: 1rem !important;
+    height: 200px;
+    object-fit: cover !important;
+    width: 100%;
+}
+
+.card-body{
+    padding:0 !important ;
+}
+
+.card-text p{
+    font-weight: 400px;
+}
+
+.listing-link{
+    text-decoration: none;
+}
+
+.card-img-overlay{
+    opacity: 0;
+}
+.card:hover .card-img-overlay{
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: white;
+    transition: opacity 0.3s ease;
+}
+
+.add-btn{
+    background-color: #ff6347;
+    border: none;
+}
+
+
+.show-img{
+
+
+    
+    height: 30vh !important;
+    object-fit: cover !important;
+}
+
+
+.btns{
+    display:flex;
+}
+
+
+.show-card{
+    margin-bottom: 2rem;
+}
+
+/* MAP */
+
+#map { 
+    height: 400px;
+    width : 80vh;
+}
